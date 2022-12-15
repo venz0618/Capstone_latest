@@ -1,14 +1,11 @@
 <?php
 
 namespace App\Http\Controllers\officer;
-use App\Models\ExpressLoanApp;
-use App\Http\Controllers\Controller;
-use App\Models\LoanApplication;
-use Illuminate\Http\Request;
-use App\Models\User;
-use RealRashid\SweetAlert\Facades\Alert;
 
-class PreLoanApplicationController extends Controller
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Models\LoanApplication;
+class DeclineLoanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -48,31 +45,16 @@ class PreLoanApplicationController extends Controller
             'express_lad_loan_details.employer as exp_emp',
             'express_lad_loan_details.product_loan as express_loan',
 
-            'regular_special_loan_details.length_of_service as los',
-            'regular_special_loan_details.employment_status as es',
-            'regular_special_loan_details..present_position as pp',
+            'regular_special_loan_details.*',
 
-            'monthly_incomes.borrower_income as bi',
-            'monthly_incomes.other_income as oi',
-            'monthly_incomes.spouse_income as si',
-            'monthly_incomes.amount_applied as am_ap',
-            'monthly_incomes.term_applied as term_ap',
-            'monthly_incomes.mode_of_payment as mode_op',
+            'monthly_expenses.*',
 
-            'monthly_expenses.scanned_signature as sc',
-            'monthly_expenses.food as food',
-            'monthly_expenses.education_bill as eb',
-            'monthly_expenses.electric_bill as elb',
-            'monthly_expenses.water_bill as wb',
-            'monthly_expenses.transportation as trans',
-            'monthly_expenses.allowances as allow',
-            'monthly_expenses.others as others',
-            'monthly_incomes.product_loan as prod_l',
+            'monthly_incomes.*'
             )
-        ->where('loan_status', '=', 0)
+        ->where('loan_status', '=', 3)
         ->get();
 
-        return view('officer.loan', compact('loan'));
+        return view('officer.decline-loan', compact('loan'));
     }
 
     /**
@@ -91,34 +73,9 @@ class PreLoanApplicationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $r)
+    public function store(Request $request)
     {
-
-        // $loan = new LoanApplication();
-        // $loan->users_id = $r->user_id;
-        // $loan->save();
-
-        // $l = new ExpressLoanApp();
-        // $l->loan_application_id = $loan->id;
-        // $l->acc_id = $r->acc_id;
-        // $l->name =$r->name;
-        // $l->present_address = $r->present_address;
-        // $l->permanent_address = $r->permanent_address;
-        // $l->loan_type = $r->loan_type;
-        // $l->emp  = $r->emp;
-        // $l->emp_address = $r->emp_address;
-        // $l->email = $r->email;
-        // $l->amount = $r->amount;
-        // $l->mode_payment = $r->mode_payment;
-        // $l->term_applied = $r->term_applied;
-        // $l->phone_no = $r->phone_no;
-        // $l->tin = $r->tin;
-        // $l->fb_acc = $r->fb_acc;
-        // $l->loanApp_type = $r->loanApp_type;
-
-        // $l->save();
-
-        // return back();
+        //
     }
 
     /**
@@ -140,8 +97,7 @@ class PreLoanApplicationController extends Controller
      */
     public function edit($id)
     {
-        $loan = LoanApplication::find($id);
-        return view('officer.loan', compact('loan'));
+        //
     }
 
     /**
@@ -153,17 +109,7 @@ class PreLoanApplicationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $loan = LoanApplication::find($id);
-        $loan->loan_status = $request->loan_status;
-        $loan->save();
-        $status = $loan->loan_status;
-        if ($status == 1){
-            Alert::success('Successfull','Pre-Approved');
-        }
-        if($status == 3){
-            Alert::success('Successfull','Disapproved');
-        }
-        return redirect('officer/pre-approved-loans');
+        //
     }
 
     /**

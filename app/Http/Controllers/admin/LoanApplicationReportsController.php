@@ -5,7 +5,7 @@ use App\Models\ExpressLoanApp;
 use App\Http\Controllers\Controller;
 use App\Models\LoanApplication;
 use Illuminate\Http\Request;
-
+use RealRashid\SweetAlert\Facades\Alert;
 class LoanApplicationReportsController extends Controller
 {
     /**
@@ -46,11 +46,26 @@ class LoanApplicationReportsController extends Controller
             'express_lad_loan_details.employer as exp_emp',
             'express_lad_loan_details.product_loan as express_loan',
 
-            'regular_special_loan_details.*',
+            'regular_special_loan_details.length_of_service as los',
+            'regular_special_loan_details.employment_status as es',
+            'regular_special_loan_details..present_position as pp',
 
-            'monthly_expenses.*',
+            'monthly_incomes.borrower_income as bi',
+            'monthly_incomes.other_income as oi',
+            'monthly_incomes.spouse_income as si',
+            'monthly_incomes.amount_applied as am_ap',
+            'monthly_incomes.term_applied as term_ap',
+            'monthly_incomes.mode_of_payment as mode_op',
 
-            'monthly_incomes.*'
+            'monthly_expenses.scanned_signature as sc',
+            'monthly_expenses.food as food',
+            'monthly_expenses.education_bill as eb',
+            'monthly_expenses.electric_bill as elb',
+            'monthly_expenses.water_bill as wb',
+            'monthly_expenses.transportation as trans',
+            'monthly_expenses.allowances as allow',
+            'monthly_expenses.others as others',
+            'monthly_incomes.product_loan as prod_l',
             )
         ->where('loan_status', '=', 2)
         ->get();
@@ -98,7 +113,8 @@ class LoanApplicationReportsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $loan = LoanApplication::find($id);
+        return view('officer.loan', compact('loan'));
     }
 
     /**
@@ -110,7 +126,15 @@ class LoanApplicationReportsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+        $loan = LoanApplication::find($id);
+        $loan->loan_status = $request->loan_status;
+        // $loan->acc_id = $request->acc_id;
+        // $loan->or_no = $request->or_no;
+        $loan->save();
+        Alert::success('Successfull','Settled');
+        
+        return redirect('admin/approved-loans');
     }
 
     /**

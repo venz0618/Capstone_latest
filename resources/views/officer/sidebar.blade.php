@@ -44,6 +44,7 @@
         <ul class="collapse list-unstyled" id="element1">
           <li><a href="/officer/pre-approved-membership">> <span>Pre-approve Membership </span></a></li>
           <li><a href="/officer/pre-approved-loans">> <span>Pre-approve Loan</span></a></li>
+          <li><a href="/officer/decline-loan">> <span>Decline Loan</span></a></li>
         </ul>
       </li>
       <!-- <li><a href="/officer/member"><i class="fa fa-users red_color"></i> <span>Members</span></a></li> -->

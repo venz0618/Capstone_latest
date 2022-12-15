@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\LoanApplication;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use RealRashid\SweetAlert\Facades\Alert;
 class ApproveLoanApplicationController extends Controller
 {
     /**
@@ -137,7 +138,8 @@ class ApproveLoanApplicationController extends Controller
         // $loan->acc_id = $request->acc_id;
         // $loan->or_no = $request->or_no;
         $loan->save();
-
+        Alert::success('Successfull','Approved');
+        
         return redirect('admin/approved-loans');
     }
 

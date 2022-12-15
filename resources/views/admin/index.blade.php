@@ -56,6 +56,7 @@
 						</div>
 						<div class="container-fluid">
 							@include('admin.footer')
+							@include('sweetalert::alert')
 						</div>
 					</div>
 				</div>

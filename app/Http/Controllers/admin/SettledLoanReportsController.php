@@ -1,14 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\officer;
-use App\Models\ExpressLoanApp;
-use App\Http\Controllers\Controller;
-use App\Models\LoanApplication;
-use Illuminate\Http\Request;
-use App\Models\User;
-use RealRashid\SweetAlert\Facades\Alert;
+namespace App\Http\Controllers\admin;
 
-class PreLoanApplicationController extends Controller
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Models\LoanApplication;
+
+class SettledLoanReportsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -69,10 +67,10 @@ class PreLoanApplicationController extends Controller
             'monthly_expenses.others as others',
             'monthly_incomes.product_loan as prod_l',
             )
-        ->where('loan_status', '=', 0)
+        ->where('loan_status', '=', 4)
         ->get();
 
-        return view('officer.loan', compact('loan'));
+        return view('admin.settled-loans', compact('loan'));
     }
 
     /**
@@ -91,34 +89,9 @@ class PreLoanApplicationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $r)
+    public function store(Request $request)
     {
-
-        // $loan = new LoanApplication();
-        // $loan->users_id = $r->user_id;
-        // $loan->save();
-
-        // $l = new ExpressLoanApp();
-        // $l->loan_application_id = $loan->id;
-        // $l->acc_id = $r->acc_id;
-        // $l->name =$r->name;
-        // $l->present_address = $r->present_address;
-        // $l->permanent_address = $r->permanent_address;
-        // $l->loan_type = $r->loan_type;
-        // $l->emp  = $r->emp;
-        // $l->emp_address = $r->emp_address;
-        // $l->email = $r->email;
-        // $l->amount = $r->amount;
-        // $l->mode_payment = $r->mode_payment;
-        // $l->term_applied = $r->term_applied;
-        // $l->phone_no = $r->phone_no;
-        // $l->tin = $r->tin;
-        // $l->fb_acc = $r->fb_acc;
-        // $l->loanApp_type = $r->loanApp_type;
-
-        // $l->save();
-
-        // return back();
+        //
     }
 
     /**
@@ -140,8 +113,7 @@ class PreLoanApplicationController extends Controller
      */
     public function edit($id)
     {
-        $loan = LoanApplication::find($id);
-        return view('officer.loan', compact('loan'));
+        //
     }
 
     /**
@@ -153,17 +125,7 @@ class PreLoanApplicationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $loan = LoanApplication::find($id);
-        $loan->loan_status = $request->loan_status;
-        $loan->save();
-        $status = $loan->loan_status;
-        if ($status == 1){
-            Alert::success('Successfull','Pre-Approved');
-        }
-        if($status == 3){
-            Alert::success('Successfull','Disapproved');
-        }
-        return redirect('officer/pre-approved-loans');
+        //
     }
 
     /**

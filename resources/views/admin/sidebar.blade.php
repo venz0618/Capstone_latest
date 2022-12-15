@@ -35,6 +35,7 @@
         <ul class="collapse list-unstyled" id="element1">
           <li><a href="/admin/approved-membership">> <span>Approved Memberships</span></a></li>
           <li><a href="/admin/approved-loans">> <span>Approved Loans</span></a></li>
+          <li><a href="/admin/settled-loans">> <span>Settled Loans</span></a></li>
         </ul>
       </li>
     </ul>

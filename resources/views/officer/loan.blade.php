@@ -169,8 +169,15 @@
               <!-- Modal footer -->
               <div class="modal-footer">
                   <button type="submit" class="btn btn-success mb-4 mt-4">Pre-Approved</button>
-                  <button type="button" class="btn btn-danger" data-dismiss="modal">Decline</button>
                 </form>
+                  <form action="{{ route('loan.update', $l->LOAN_ID) }}" method="POST">
+                    @csrf
+                  
+                    @method('PUT')
+                    <input type="hidden" name="loan_status" value="3">
+                  <button type="submit" class="btn btn-warning ">Decline</button>
+                    </form>
+                
               </div>
            </div>
         </div>
@@ -191,7 +198,7 @@
                   @csrf
 
                   @method('PUT')
-                  <input type="hidden" value="1" name="is_approved">
+                  <input type="hidden" value="1" name="loan_status">
               <div class="modal-body">
                 <h4>{{ ucwords($l->TypeOfLoan) }} Loan</h4>
 
@@ -338,8 +345,15 @@
               <!-- Modal footer -->
               <div class="modal-footer">
                   <button type="submit" class="btn btn-success mb-4 mt-4">Pre-Approved</button>
-                  <button type="button" class="btn btn-danger" data-dismiss="modal">Decline</button>
+                 
                 </form>
+                <form action="{{ route('loan.update', $l->LOAN_ID) }}" method="POST">
+                  @csrf
+                
+                  @method('PUT')
+                  <input type="hidden" name="loan_status" value="3">
+                <button type="submit" class="btn btn-danger ">Decline</button>
+                  </form>
               </div>
            </div>
         </div>
