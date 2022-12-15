@@ -23,7 +23,7 @@ class ClientDashboardController extends Controller
         ->get();
 
         $paid = LoanApplication::where('users_id', auth()->user()->id)
-        ->where('loan_status', 3)
+        ->where('loan_status', 4)
         ->get();
         return view('client.dashboard.dashboard', compact('loan' , 'active' , 'paid'));
     }
