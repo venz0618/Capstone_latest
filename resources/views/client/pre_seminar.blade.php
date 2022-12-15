@@ -29,14 +29,20 @@
 </div> -->
             <div class="row">
                     <div class="col-md-8 offset-md-2">
-                        <video width="110%" controls loop>
+                        <video id="video" width="110%" controls>
                                 <source src="../klassy/images/CASALCO_ORIENTATION.mp4" type="video/mp4">
                         </video>
 
-                    </div>
+                        <form method="get" action="{{ url('/') }}">
+                          <div class="col-md-10 offset-md-6">
+                              <button type="submit" class="btn btn-primary" id="myBtn" name="home" disabled='disabled' >If you are done watching, click Return to home page</button>
+                          </div>
+                      </form>
+
+                    {{-- </div>
                     <div class="col-md-10 offset-md-6">
                     <a class="btn btn-primary" href="/" role="button">If you are done watching, click Return to home page</a>
-                    </div>
+                    </div> --}}
             </div>
 
 

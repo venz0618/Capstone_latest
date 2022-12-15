@@ -62,5 +62,13 @@
   @include('client.scripts.page-level-js')
   @include('sweetalert::alert')
 
+
+  <script>
+    document.getElementById('video').addEventListener('ended',videoEndHandler,false);
+    function videoEndHandler(e) {
+    document.getElementById("myBtn").disabled = false;
+      }
+  </script>
+
 </body>
 </html>
