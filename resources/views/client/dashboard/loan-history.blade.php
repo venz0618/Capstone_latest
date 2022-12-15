@@ -27,7 +27,7 @@
                                         <td>{{ ucwords($l->loan_type) }}</td>
                                         <td>{{ date('m-d-Y, h:s:i ', strtotime($l->created_at)) }}</td>
                                         <td>
-                                            <span class="badge badge-success">Active</span>
+                                            <span class="badge badge-success">Settled</span>
                                         </td>
                                         <td>
   

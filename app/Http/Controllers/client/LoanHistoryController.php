@@ -15,7 +15,7 @@ class LoanHistoryController extends Controller
     public function index()
     {
         $loan = LoanApplication::where('users_id', auth()->user()->id)
-        ->where('is_approved', 3)
+        ->where('loan_status', 3)
         ->get();
         return view('client.dashboard.loan-history', compact('loan'));
     }

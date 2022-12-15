@@ -14,7 +14,7 @@
                       <th>Account No</th>
                       <th>Loan Type</th>
                       <th>Date Applied</th>
-                      <th>Date Pre-approved</th>
+                      <th>Date Settled</th>
                       <th>Status</th>
                       {{-- <th>Action</th> --}}
                   </tr>
