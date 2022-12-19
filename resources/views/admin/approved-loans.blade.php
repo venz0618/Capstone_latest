@@ -1,5 +1,5 @@
 @extends('admin.index')
-@section('title', 'Loan')
+@section('title', 'Approved Loan Application List')
 @section('admin_content')
 
 <div class="col-md-12">

@@ -1,5 +1,5 @@
 @extends('officer.index')
-@section('title', 'Loan')
+@section('title', 'Pre-approved Loan Application List')
 @section('officer_content')
 
 
